@@ -4,30 +4,30 @@ title: Preservare e resettare lo stato
 
 <Intro>
 
-State is isolated between components. React keeps track of which state belongs to which component based on their place in the UI tree. You can control when to preserve state and when to reset it between re-renders.
+Lo State è isolato nel proprio componente. React tiene traccia dello state nel proprio componente basandosi sulla sua posizione all'interno dell'Interfaccia Utente. Puoi controllare quando preservarlo o resettarlo tramite il re-render.
 
 </Intro>
 
 <YouWillLearn>
 
-* How React "sees" component structures
-* When React chooses to preserve or reset the state
-* How to force React to reset component's state
-* How keys and types affect whether the state is preserved
+* In che modo React "vede" le strutture dei componenti
+* Quando React sceglie di preservare o resettare lo state
+* Come forzare React a resettare lo state del componente
+* In che modo le chiavi e i tipi influenzano la conservazione dello stato
 
 </YouWillLearn>
 
-## The UI tree {/*the-ui-tree*/}
+## La UI con struttura ad albero {/*la-ui-con-struttura-ad-albero*/}
 
-Browsers use many tree structures to model UI. The [DOM](https://developer.mozilla.org/docs/Web/API/Document_Object_Model/Introduction) represents HTML elements, the [CSSOM](https://developer.mozilla.org/docs/Web/API/CSS_Object_Model) does the same for CSS. There's even an [Accessibility tree](https://developer.mozilla.org/docs/Glossary/Accessibility_tree)!
+I browser utilizzano molte strutture ad albero per modellare l'interfaccia utente. Il [DOM](https://developer.mozilla.org/docs/Web/API/Document_Object_Model/Introduction) rappresenta gli elementi HTML, il [CSSOM](https://developer.mozilla.org/docs/Web/API/CSS_Object_Model) fa lo stesso per il CSS. C'è anche un [Albero dell'accessibilità](https://developer.mozilla.org/docs/Glossary/Accessibility_tree)!
 
-React also uses tree structures to manage and model the UI you make. React makes **UI trees** from your JSX. Then React DOM updates the browser DOM elements to match that UI tree. (React Native translates these trees into elements specific to mobile platforms.)
+React utilizza inoltre strutture ad albero per controllare e modellare la UI che crei. React crea **UI con strutture ad albero** dal tuo JSX. Quindi React DOM aggiorna gli elementi DOM del browser in modo che corrispondano a quell'albero dell'interfaccia utente. (React Native traduce queste strutture in elementi specifici per le piattaforme mobile.)
 
 <DiagramGroup>
 
-<Diagram name="preserving_state_dom_tree" height={193} width={864} alt="Diagram with three sections arranged horizontally. In the first section, there are three rectangles stacked vertically, with labels 'Component A', 'Component B', and 'Component C'. Transitioning to the next pane is an arrow with the React logo on top labeled 'React'. The middle section contains a tree of components, with the root labeled 'A' and two children labeled 'B' and 'C'. The next section is again transitioned using an arrow with the React logo on top labeled 'React'. The third and final section is a wireframe of a browser, containing a tree of 8 nodes, which has only a subset highlighted (indicating the subtree from the middle section).">
+<Diagram name="preserving_state_dom_tree" height={193} width={864} alt="Schema con tre sezioni disposte orizzontalmente. Nella prima sezione sono presenti tre rettangoli sovrapposti verticalmente, con le etichette 'Componente A', 'Componente B', e 'Componente C'. La transizione al riquadro successivo è una freccia con il logo React in alto con l'etichetta 'React'. La sezione centrale contiene un albero di componenti, con la radice etichettata 'A' e due figli etichettati 'B' e 'C'. La sezione successiva viene nuovamente spostata utilizzando una freccia con il logo React in alto con l'etichetta 'React'. La terza e ultima sezione è un wireframe di un browser, contenente un albero di 8 nodi, di cui è evidenziato solo un sottoinsieme (che indica il sottoalbero della sezione centrale).">
 
-From components, React creates a UI tree which React DOM uses to render the DOM
+Dai componenti, React crea una UI con struttura ad albero che React DOM utilizza per renderizzare il DOM
 
 </Diagram>
 
