@@ -1,5 +1,5 @@
 ---
-title: Preserving and Resetting State
+title: Preservare e resettare lo stato
 ---
 
 <Intro>
